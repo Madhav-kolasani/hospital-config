@@ -9,13 +9,3 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-    service-url:
-      defaultZone: http://localhost:6601/eureka
-  instance:
-    hostname: localhost
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
