@@ -2,34 +2,38 @@ server:
   port: 6602
 
 spring:
+  application:
+    name: api-gateway
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-      routes:
-        - id: patient-service-route
-          uri: lb://patient-service
-          predicates:
-            - Path=/api/patients/**
-        - id: doctor-service-route
-          uri: lb://doctor-service
-          predicates:
-            - Path=/api/doctors/**
-        - id: appointment-service-route
-          uri: lb://appointment-service
-          predicates:
-            - Path=/api/appointments/**
-        - id: prescription-service-route
-          uri: lb://prescription-service
-          predicates:
-            - Path=/api/prescriptions/**
-        - id: billing-service-route
-          uri: lb://billing-service
-          predicates:
-            - Path=/api/billing/**
-        - id: notification-service-route
-          uri: lb://notification-service
-          predicates:
-            - Path=/api/notifications/**
+      server:
+        webmvc:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes:
+            - id: patient-service-route
+              uri: lb://patient-service
+              predicates:
+                - Path=/api/patients/**
+            - id: doctor-service-route
+              uri: lb://doctor-service
+              predicates:
+                - Path=/api/doctors/**
+            - id: appointment-service-route
+              uri: lb://appointment-service
+              predicates:
+                - Path=/api/appointments/**
+            - id: prescription-service-route
+              uri: lb://prescription-service
+              predicates:
+                - Path=/api/prescriptions/**
+            - id: billing-service-route
+              uri: lb://billing-service
+              predicates:
+                - Path=/api/billing/**
+            - id: notification-service-route
+              uri: lb://notification-service
+              predicates:
+                - Path=/api/notifications/**
